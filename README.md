@@ -38,18 +38,30 @@ packageVersion("voteogram")
     ## [1] '0.1.0'
 
 ``` r
-df <- fromJSON("https://pp-projects-static.s3.amazonaws.com/congress/assets/senate_115_1_110.json")$votes
+sen_df <- fromJSON("https://pp-projects-static.s3.amazonaws.com/congress/assets/senate_115_1_110.json")$votes
+
+rep_df <- fromJSON("https://pp-projects-static.s3.amazonaws.com/congress/assets/house_115_1_256.json")$votes
 ```
 
 ``` r
-select(df, state_abbrev, district, party, position) %>% 
+select(sen_df, state_abbrev, district, party, position) %>% 
   senate_carto() +
   labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
   theme_ipsum_rc(grid="", plot_title_size = 24) +
   theme(axis.text=element_blank())
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/sen-1.png)
+
+``` r
+select(rep_df, state_abbrev, district, party, position) %>% 
+  house_carto() +
+  labs(title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
+  theme_ipsum_rc(grid="", plot_title_size = 24) +
+  theme(axis.text=element_blank())
+```
+
+![](README_files/figure-markdown_github/rep-1.png)
 
 ### Test Results
 
@@ -60,7 +72,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat May  6 15:56:32 2017"
+    ## [1] "Sat May  6 18:18:44 2017"
 
 ``` r
 test_dir("tests/")

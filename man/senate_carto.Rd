@@ -7,9 +7,9 @@
 senate_carto(vote_tally)
 }
 \arguments{
-\item{a}{\code{data.frame} of vote tallys for the senate. It expects 3 columns. \code{state} : the
-2-letter U.S. state abbreviation; \code{senator} : either \code{1} or \code{2} to distinguish between
-each senator; \code{party} : \code{R}, \code{D} or \code{I}; \code{vote} : \code{yes}, \code{no}, \code{present}, \code{none} for
+\item{a}{\code{data.frame} of vote tallys for the senate. It expects 3 columns. \code{state_abbrev} : the
+2-letter U.S. state abbreviation; \code{district} : either \code{1} or \code{2} to distinguish between
+each senator; \code{party} : \code{R}, \code{D} or \code{ID}; \code{position} : \code{yes}, \code{no}, \code{present}, \code{none} for
 how the senator voted.}
 }
 \value{

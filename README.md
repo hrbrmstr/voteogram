@@ -3,9 +3,12 @@
 
 Produce voting cartograms in the style of 'ProPublica'.
 
+Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
+
 ### TODO
 
--   House cartogram
+-   House cartogram generator
+-   `htmlwidget` version
 -   Colors for "not voting" & "present"
 -   Cargo theme
 -   Ability to retrieve votes from ProPublica.
@@ -57,7 +60,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat May  6 13:49:35 2017"
+    ## [1] "Sat May  6 13:51:07 2017"
 
 ``` r
 test_dir("tests/")

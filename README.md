@@ -51,7 +51,7 @@ select(sen_df, state_abbrev, district, party, position) %>%
   theme(axis.text=element_blank())
 ```
 
-![](README_files/figure-markdown_github/sen-1.png)
+<img src="README_files/figure-markdown_github/sen-1.png" width="960" />
 
 ``` r
 select(rep_df, state_abbrev, district, party, position) %>% 
@@ -61,7 +61,7 @@ select(rep_df, state_abbrev, district, party, position) %>%
   theme(axis.text=element_blank())
 ```
 
-![](README_files/figure-markdown_github/rep-1.png)
+<img src="README_files/figure-markdown_github/rep-1.png" width="960" />
 
 ### Test Results
 
@@ -72,7 +72,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat May  6 18:18:44 2017"
+    ## [1] "Sat May  6 18:26:23 2017"
 
 ``` r
 test_dir("tests/")

@@ -1,7 +1,9 @@
 ---
 output: rmarkdown::github_document
 ---
-
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.retina=2)
+```
 `voteogram` : U.S. House and Senate Voting Cartogram Generators
 
 Produce voting cartograms in the style of 'ProPublica'.

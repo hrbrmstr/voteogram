@@ -10,7 +10,7 @@ Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
 -   House cartogram generator
 -   `htmlwidget` version
 -   Colors for "not voting" & "present"
--   Cargo theme
+-   Carto theme
 -   Ability to retrieve votes from ProPublica.
 
 The following functions are implemented:
@@ -60,7 +60,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat May  6 13:51:07 2017"
+    ## [1] "Sat May  6 15:56:32 2017"
 
 ``` r
 test_dir("tests/")

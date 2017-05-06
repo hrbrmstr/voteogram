@@ -13,7 +13,7 @@ Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
 - House cartogram generator
 - `htmlwidget` version
 - Colors for "not voting" & "present"
-- Cargo theme
+- Carto theme
 - Ability to retrieve votes from ProPublica.
 
 The following functions are implemented:

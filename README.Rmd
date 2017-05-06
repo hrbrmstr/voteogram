@@ -12,11 +12,11 @@ Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
 
 ### TODO
 
-- House cartogram generator
+- <strike>House cartogram generator</strike>
 - `htmlwidget` version
-- Colors for "not voting" & "present"
-- Carto theme
-- Ability to retrieve votes from ProPublica.
+- Colors for <strike>"vacant"</strike>, not voting" & "present"
+- Make a `votecarto` theme
+- Add in ability to retrieve votes from ProPublica.
 
 The following functions are implemented:
 

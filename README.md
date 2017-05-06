@@ -7,11 +7,11 @@ Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
 
 ### TODO
 
--   House cartogram generator
+-   <strike>House cartogram generator</strike>
 -   `htmlwidget` version
--   Colors for "not voting" & "present"
--   Carto theme
--   Ability to retrieve votes from ProPublica.
+-   Colors for <strike>"vacant"</strike>, not voting" & "present"
+-   Make a `votecarto` theme
+-   Add in ability to retrieve votes from ProPublica.
 
 The following functions are implemented:
 
@@ -72,7 +72,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat May  6 18:26:23 2017"
+    ## [1] "Sat May  6 18:30:29 2017"
 
 ``` r
 test_dir("tests/")

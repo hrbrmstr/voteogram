@@ -1,0 +1,20 @@
+Package: voteogram
+Type: Package
+Title: U.S. House and Senate Voting Cartogram Generators
+Version: 0.1.0
+Date: 2017-05-06
+Author: Bob Rudis (bob@rud.is)
+Maintainer: Bob Rudis <bob@rud.is>
+Description: Produce voting cartograms in the style of 'ProPublica'.
+URL: https://github.com/hrbrmstr/voteogram
+BugReports: https://github.com/hrbrmstr/voteogram/issues
+License: AGPL
+Suggests:
+    testthat,
+    covr
+Depends:
+    R (>= 3.2.0)
+Imports:
+    ggplot2,
+    dplyr
+RoxygenNote: 6.0.1

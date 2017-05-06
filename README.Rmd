@@ -1,0 +1,64 @@
+---
+output: rmarkdown::github_document
+---
+
+`voteogram` : U.S. House and Senate Voting Cartogram Generators
+
+Produce voting cartograms in the style of 'ProPublica'.
+
+### TODO
+
+- House cartogram
+- Colors for "not voting" & "present"
+- Cargo theme
+- Ability to retrieve votes from ProPublica.
+
+The following functions are implemented:
+
+- `senate_carto`: Produce a Senate cartogram
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("hrbrmstr/voteogram")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(voteogram)
+library(jsonlite)
+library(hrbrthemes)
+library(tidyverse)
+
+# current verison
+packageVersion("voteogram")
+```
+
+```{r cache=TRUE}
+df <- fromJSON("https://pp-projects-static.s3.amazonaws.com/congress/assets/senate_115_1_110.json")$votes
+```
+
+```{r fig.width=10, fig.height=7}
+select(df, state_abbrev, district, party, position) %>% 
+  senate_carto() +
+  labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
+  theme_ipsum_rc(grid="", plot_title_size = 24) +
+  theme(axis.text=element_blank())
+```
+
+### Test Results
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(voteogram)
+library(testthat)
+
+date()
+
+test_dir("tests/")
+```
+

@@ -47,7 +47,7 @@ library(jsonlite)
 library(hrbrthemes)
 library(tidyverse)
 
-# current verison
+# current version
 packageVersion("voteogram")
 ```
 

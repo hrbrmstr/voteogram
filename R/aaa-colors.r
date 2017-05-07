@@ -11,11 +11,14 @@ NULL
 vote_carto_fill <- c(
   `D-yes`="#003366",
   `D-no`="#869fc4",
+  `D-not voting`="#e1ecf8",
+  `D-present`="#e1ecf8",
   `ID-yes`="#e59b16",
   `ID-no`="#eeba58",
   `R-yes`="#aa0000",
   `R-no`="#d68585",
   `R-not voting`="#f8e9e9",
+  `R-present`="#present",
   `Vacant`="#2b2b2b"
 )
 
@@ -24,10 +27,13 @@ vote_carto_fill <- c(
 vote_carto_color <- c(
   `D-yes`="#003366",
   `D-no`="#869fc4",
+  `D-not voting`="#e1ecf8",
+  `D-present`="#e1ecf8",
   `ID-yes`="#e59b16",
   `ID-no`="#eeba58",
   `R-yes`="#aa0000",
   `R-no`="#d68585",
   `R-not voting`="#f8e9e9",
+  `R-present`="#present",
   `Vacant`="#2b2b2b"
 )

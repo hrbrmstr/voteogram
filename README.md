@@ -13,11 +13,11 @@ You can grab the results of a roll call vote (House or Senate) with `roll_call()
 ### TODO
 
 -   <strike>House cartogram generator</strike>
--   `htmlwidget` version
--   Colors for <strike>"vacant"</strike>, not voting" & "present"
--   Make a `voteogram` theme
 -   <strike>Param bulletproofing (param checking, et al)</strike>
 -   <strike>Add in ability to retrieve votes from ProPublica.</strike>
+-   <strike>Make a `voteogram` theme</strike>
+-   "Independent" colors for "not voting" & "present"
+-   `htmlwidget` version
 
 The following functions are implemented:
 
@@ -27,6 +27,7 @@ The following functions are implemented:
 
 Helpers:
 
+-   `theme_voteogram`: voteogram ggplot2 theme
 -   `print.pprc`: Better default 'print' function for `roll_call()` (`pprc`) objects
 -   `fortify.pprc` : In case you want to use the voting data frame from a `roll_call()` (`pprc`) object in your own plots and forget to just `$votes` it out. \#helping
 
@@ -116,8 +117,8 @@ fortify(rep)
 ``` r
 senate_carto(sen) +
   labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
-  theme_ipsum_rc(grid="", plot_title_size = 24) +
-  theme(axis.text=element_blank())
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
 ```
 
 <img src="README_files/figure-markdown_github/sen-1.png" width="960" />
@@ -125,8 +126,8 @@ senate_carto(sen) +
 ``` r
 house_carto(rep) +
   labs(title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
-  theme_ipsum_rc(grid="", plot_title_size = 24) +
-  theme(axis.text=element_blank())
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
 ```
 
 <img src="README_files/figure-markdown_github/rep-1.png" width="960" />
@@ -140,7 +141,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 07:35:25 2017"
+    ## [1] "Sun May  7 07:55:03 2017"
 
 ``` r
 test_dir("tests/")

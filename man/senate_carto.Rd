@@ -19,3 +19,7 @@ a \code{ggplot2} object that you can further customize with scales, labels, etc.
 \description{
 Produce a Senate cartogram
 }
+\note{
+No "themeing" is applied to the returned ggplot2 object. You can use  \code{\link[=theme_voteogram]{theme_voteogram()}}
+if you need a base theme.
+}

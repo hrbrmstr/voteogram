@@ -91,8 +91,16 @@ senate_carto(sen) +
   theme_voteogram()
 ```
 
-```{r rep_pp, fig.width=10, fig.height=7}
-house_carto(rep) +
+```{r rep_pp_square, fig.width=10, fig.height=7}
+house_carto(rep, pp_square=TRUE) +
+  labs(x=NULL, y=NULL, 
+       title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
+```
+
+```{r rep_pp_orig, fig.width=10, fig.height=7}
+house_carto(rep, pp_square=FALSE) +
   labs(x=NULL, y=NULL, 
        title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
   theme_ipsum_rc(plot_title_size = 24) +
@@ -119,6 +127,10 @@ senate_carto(sen) + theme_voteogram(legend=FALSE)
 
 ```{r rep_small, fig.width=3, fig.height=2.1}
 house_carto(rep) + theme_voteogram(legend=FALSE)
+```
+
+```{r rep_small_1, fig.width=3, fig.height=2.1}
+house_carto(rep, pp_square=TRUE) + theme_voteogram(legend=FALSE)
 ```
 
 ### Test Results

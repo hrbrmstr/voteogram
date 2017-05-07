@@ -4,7 +4,8 @@
 \alias{house_carto}
 \title{Produce a ProPublica- or GovTrack-style House roll call vote cartogram}
 \usage{
-house_carto(vote_tally, style = c("pp", "gt", "propublica", "govtrack"))
+house_carto(vote_tally, style = c("pp", "gt", "propublica", "govtrack"),
+  pp_square = FALSE)
 }
 \arguments{
 \item{vote_tally}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
@@ -14,6 +15,9 @@ each representative; \code{party} : \code{R}, \code{D} or \code{ID}; \code{posit
 how the representative voted.}
 
 \item{style}{either ProPublica-ish (\code{pp} or \code{propublica}) or GovTrack-ish (\code{gt} or \code{govtrack})}
+
+\item{pp_square}{if \code{TRUE} then no "state borders" will be drawn, but distinct Representative
+squares. If \code{FALSE} then the cartogram will be very close to the ProPublica cartograms.}
 }
 \value{
 a \code{ggplot2} object that you can further customize with scales, labels, etc.

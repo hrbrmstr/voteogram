@@ -47,7 +47,7 @@ library(jsonlite)
 library(hrbrthemes)
 library(tidyverse)
 
-# current version
+# current verison
 packageVersion("voteogram")
 ```
 
@@ -128,14 +128,24 @@ senate_carto(sen) +
 <img src="README_files/figure-markdown_github/sen-1.png" width="960" />
 
 ``` r
-house_carto(rep) +
+house_carto(rep, pp_square=TRUE) +
   labs(x=NULL, y=NULL, 
        title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
   theme_ipsum_rc(plot_title_size = 24) +
   theme_voteogram()
 ```
 
-<img src="README_files/figure-markdown_github/rep_pp-1.png" width="960" />
+<img src="README_files/figure-markdown_github/rep_pp_square-1.png" width="960" />
+
+``` r
+house_carto(rep, pp_square=FALSE) +
+  labs(x=NULL, y=NULL, 
+       title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
+```
+
+<img src="README_files/figure-markdown_github/rep_pp_orig-1.png" width="960" />
 
 ### GovTrack
 
@@ -165,6 +175,12 @@ house_carto(rep) + theme_voteogram(legend=FALSE)
 
 <img src="README_files/figure-markdown_github/rep_small-1.png" width="288" />
 
+``` r
+house_carto(rep, pp_square=TRUE) + theme_voteogram(legend=FALSE)
+```
+
+<img src="README_files/figure-markdown_github/rep_small_1-1.png" width="288" />
+
 ### Test Results
 
 ``` r
@@ -174,7 +190,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 11:45:36 2017"
+    ## [1] "Sun May  7 17:38:37 2017"
 
 ``` r
 test_dir("tests/")

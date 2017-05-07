@@ -7,12 +7,14 @@
 #'     each representative; `party` : `R`, `D` or `ID`; `position` : `yes`, `no`, `present`, `none` for
 #'     how the representative voted.
 #' @param style either ProPublica-ish (`pp` or `propublica`) or GovTrack-ish (`gt` or `govtrack`)
+#' @param pp_square if `TRUE` then no "state borders" will be drawn, but distinct Representative
+#'     squares. If `FALSE` then the cartogram will be very close to the ProPublica cartograms.
 #' @return a `ggplot2` object that you can further customize with scales, labels, etc.
 #' @note No "themeing" is applied to the returned ggplot2 object. You can use  [theme_voteogram()]
 #'     if you need a base theme. Also, GovTrack-style cartograms will have `coord_equal()`
 #'     applied by default.
 #' @export
-house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrack")) {
+house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrack"), pp_square=FALSE) {
 
   if (inherits(vote_tally, "pprc")) vote_tally <- vote_tally$votes
   if (!inherits(vote_tally, "data.frame")) stop("Needs a data.frame", call.=FALSE)
@@ -30,10 +32,25 @@ house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrac
 
     plot_df <- left_join(house_df, vote_tally, by="id")
 
-    ggplot(plot_df) +
-      geom_rect(aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax, fill=fill), color="white", size=0.25) +
-      scale_y_reverse() +
-      scale_fill_manual(name=NULL, values=vote_carto_fill)
+    if (pp_square) {
+
+      ggplot(plot_df) +
+        geom_rect(aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax, fill=fill), color="white", size=0.25) +
+        scale_y_reverse() +
+        scale_fill_manual(name=NULL, values=vote_carto_fill)
+
+    } else {
+
+      ggplot() +
+        geom_rect(data=plot_df, aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax,
+                                    fill=fill, color=fill), size=0.25) +
+        geom_line(data=house_lines, aes(x, y, group=id),
+                  color="white", lineend="round", linejoin="round", size=0.5) +
+        scale_y_reverse() +
+        scale_color_manual(name=NULL, values=vote_carto_color) +
+        scale_fill_manual(name=NULL, values=vote_carto_fill)
+
+    }
 
   } else {
 
@@ -55,6 +72,7 @@ house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrac
       scale_y_reverse() +
       scale_fill_manual(name=NULL, values=vote_carto_fill, na.value="white") +
       coord_equal()
+
   }
 
 }

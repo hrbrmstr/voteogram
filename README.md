@@ -3,7 +3,12 @@
 
 Produce voting cartograms in the style of 'ProPublica'.
 
-Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
+Ref: (these are replicated below)
+
+-   <https://projects.propublica.org/represent/votes/115/senate/1/110>
+-   <https://projects.propublica.org/represent/votes/115/house/1/256>
+
+You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One element of that list is the `data.frame` of vote results. You can pass in the *entire* object to either `_carto()` function and it'll "fortify" it before shunting it off to ggplot2.
 
 ### TODO
 
@@ -17,9 +22,13 @@ Ref: <https://projects.propublica.org/represent/votes/115/senate/1/110>
 The following functions are implemented:
 
 -   `house_carto`: Produce a House cartogram
--   `print.pprc`: Better default 'print' function for `roll_call()` (`pprc`) objects
--   `roll_call`: Get Voting Record for House or Senate By Number, Session & Roll Call Number
 -   `senate_carto`: Produce a Senate cartogram
+-   `roll_call`: Get Voting Record for House or Senate By Number, Session & Roll Call Number
+
+Helpers:
+
+-   `print.pprc`: Better default 'print' function for `roll_call()` (`pprc`) objects
+-   `fortify.pprc` : In case you want to use the voting data frame from a `roll_call()` (`pprc`) object in your own plots and forget to just `$votes` it out. \#helping
 
 ### Installation
 
@@ -86,7 +95,7 @@ rep
     ## Result: Passed
 
 ``` r
-rep$votes
+fortify(rep)
 ```
 
     ## # A tibble: 435 × 11
@@ -131,7 +140,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 07:23:09 2017"
+    ## [1] "Sun May  7 07:35:25 2017"
 
 ``` r
 test_dir("tests/")

@@ -14,7 +14,7 @@
 roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L), rcall) {
 
   critter <-  match.arg(tolower(critter), c("house", "senate"))
-  session <- match.arg(as.integer(session), c(1L, 2L))
+  session <- as.integer(match.arg(as.character(session), as.character(1:2)))
 
   number <- as.integer(number)
   if (number < 101L) stop("ProPublica does not have data going that far back", call.=FALSE)

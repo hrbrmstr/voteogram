@@ -1,12 +1,13 @@
 
 `voteogram` : U.S. House and Senate Voting Cartogram Generators
 
-'ProPublica' <https://projects.propublica.org/represent/> makes United States Congress member votes available and has developed their own unique cartogram to visually represent this data. Tools are provided to retrieve voting data, prepare voting data for plotting with 'ggplot2', create vote cartograms and theme them.
+'ProPublica' <https://projects.propublica.org/represent/> makes United States Congress member votes available and has developed their own unique cartogram to visually represent this data as has 'GovTrack' <URL_AT_SOME_POINT> . Tools are provided to retrieve voting data, prepare voting data for plotting with 'ggplot2', create vote cartograms and theme them.
 
 Ref: (these are replicated below)
 
 -   <https://projects.propublica.org/represent/votes/115/senate/1/110>
 -   <https://projects.propublica.org/represent/votes/115/house/1/256>
+-   <https://www.govtrack.us/congress/votes/115-2017/h256>
 
 You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One element of that list is the `data.frame` of vote results. You can pass in the *entire* object to either `_carto()` function and it'll "fortify" it before shunting it off to ggplot2. Try to cache this data (I do, below, in R markdown chunk) as you're ticking credits off of ProPublica's monthly free S3 allotment each call. Consider donating to them if you're too lazy to cache the data ;-)
 
@@ -16,12 +17,13 @@ You can grab the results of a roll call vote (House or Senate) with `roll_call()
 -   <strike>Param bulletproofing (param checking, et al)</strike>
 -   <strike>Add in ability to retrieve votes from ProPublica.</strike>
 -   <strike>Make a `voteogram` theme</strike>
+-   GovTrack Senate cartogram polygons
 -   "Independent" colors for "not voting" & "present"
 -   `htmlwidget` version
 
 The following functions are implemented:
 
--   `house_carto`: Produce a House cartogram
+-   `house_carto`: Produce a ProPublica- or GovTrack-style House roll call vote cartogram
 -   `senate_carto`: Produce a Senate cartogram
 -   `roll_call`: Get Voting Record for House or Senate By Number, Session & Roll Call Number
 
@@ -114,6 +116,8 @@ fortify(rep)
     ## 10     B001298     206          Don Bacon     Bacon     R           NE                 Neb.        2      Yes
     ## # ... with 425 more rows, and 2 more variables: dw_nominate <lgl>, pp_id <chr>
 
+### ProPublica
+
 ``` r
 senate_carto(sen) +
   labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
@@ -125,12 +129,27 @@ senate_carto(sen) +
 
 ``` r
 house_carto(rep) +
-  labs(title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
+  labs(x=NULL, y=NULL, 
+       title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
   theme_ipsum_rc(plot_title_size = 24) +
   theme_voteogram()
 ```
 
-<img src="README_files/figure-markdown_github/rep-1.png" width="960" />
+<img src="README_files/figure-markdown_github/rep_pp-1.png" width="960" />
+
+### GovTrack
+
+``` r
+house_carto(rep, "gt") +
+  labs(x=NULL, y=NULL, 
+       title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
+```
+
+<img src="README_files/figure-markdown_github/rep_gt-1.png" width="960" />
+
+### Tiny Cartograms
 
 They can be shrunk down well (though that means annotating them in some other way):
 
@@ -155,7 +174,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 08:21:44 2017"
+    ## [1] "Sun May  7 10:04:13 2017"
 
 ``` r
 test_dir("tests/")

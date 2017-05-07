@@ -2,9 +2,9 @@
 % Please edit documentation in R/gghouse.r
 \name{house_carto}
 \alias{house_carto}
-\title{Produce a House cartogram}
+\title{Produce a ProPublica- or GovTrack-style House roll call vote cartogram}
 \usage{
-house_carto(vote_tally)
+house_carto(vote_tally, style = c("pp", "gt", "propublica", "govtrack"))
 }
 \arguments{
 \item{vote_tally}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
@@ -12,14 +12,17 @@ a \code{data.frame} of vote tallies for the house It expects 3 columns. \code{st
 2-letter U.S. state abbreviation; \code{district} : either \code{1} or \code{2} to distinguish between
 each representative; \code{party} : \code{R}, \code{D} or \code{ID}; \code{position} : \code{yes}, \code{no}, \code{present}, \code{none} for
 how the representative voted.}
+
+\item{style}{either ProPublica-ish (\code{pp} or \code{propublica}) or GovTrack-ish (\code{gt} or \code{govtrack})}
 }
 \value{
 a \code{ggplot2} object that you can further customize with scales, labels, etc.
 }
 \description{
-Produce a House cartogram
+Produce a ProPublica- or GovTrack-style House roll call vote cartogram
 }
 \note{
 No "themeing" is applied to the returned ggplot2 object. You can use  \code{\link[=theme_voteogram]{theme_voteogram()}}
-if you need a base theme.
+if you need a base theme. Also, GovTrack-style cartograms will have \code{coord_equal()}
+applied by default.
 }

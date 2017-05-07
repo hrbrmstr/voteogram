@@ -9,7 +9,7 @@
 #' @docType package
 #' @author Bob Rudis (bob@@rud.is)
 #' @import ggplot2
-#' @importFrom dplyr left_join mutate tbl_df %>%
+#' @importFrom dplyr left_join mutate tbl_df filter %>%
 #' @importFrom jsonlite fromJSON
 #' @importFrom scales ordinal
 NULL

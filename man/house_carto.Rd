@@ -7,7 +7,8 @@
 house_carto(vote_tally)
 }
 \arguments{
-\item{a}{\code{data.frame} of vote tallys for the house It expects 3 columns. \code{state_abbrev} : the
+\item{vote_tally}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
+a \code{data.frame} of vote tallys for the house It expects 3 columns. \code{state_abbrev} : the
 2-letter U.S. state abbreviation; \code{district} : either \code{1} or \code{2} to distinguish between
 each representative; \code{party} : \code{R}, \code{D} or \code{ID}; \code{position} : \code{yes}, \code{no}, \code{present}, \code{none} for
 how the representative voted.}

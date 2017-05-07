@@ -17,7 +17,7 @@ You can grab the results of a roll call vote (House or Senate) with `roll_call()
 -   <strike>Param bulletproofing (param checking, et al)</strike>
 -   <strike>Add in ability to retrieve votes from ProPublica.</strike>
 -   <strike>Make a `voteogram` theme</strike>
--   GovTrack Senate cartogram polygons
+-   <strike>GovTrack Senate cartogram polygons</strike> (this is pretty much covered in [`ggparliament`](https://github.com/leeper/ggparliament) since GT only has the seat view for the Senate)
 -   "Independent" colors for "not voting" & "present"
 -   `htmlwidget` version
 
@@ -174,7 +174,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 10:04:13 2017"
+    ## [1] "Sun May  7 11:45:36 2017"
 
 ``` r
 test_dir("tests/")

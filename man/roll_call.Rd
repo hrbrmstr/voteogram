@@ -10,12 +10,22 @@ roll_call(critter = c("house", "senate"), number, session = c(1L, 2L),
 \arguments{
 \item{critter}{one of `house` or `senate`}
 
-\item{number}{valid congress number (e.g. `115`)}
+\item{number}{valid congress number. ProPublica seems to have data going back to the 101st
+Congress, so valid values are `101`-present Congress number (`115` as of the creation
+date of the package).}
 
 \item{session}{a valid session numbner (i.e. `1` or `2` and valid for current year)}
 
 \item{rcall}{roll call vote number}
 }
+\value{
+a `list`, one component of which is a `votes` `data.frame`
+}
 \description{
 Get Voting Record for House or Senate By Number, Session & Roll Call Number
+}
+\note{
+Try to cache this data if at all possible. ProPublica is a non-profit organization
+    and this data comes from their Amazon S3 buckets. Every access in a given month
+    ticks down the "free" counter.
 }

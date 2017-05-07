@@ -2,7 +2,7 @@
 #'
 #' @md
 #' @param vote_tally either a `pprc` object (the result of a call to [roll_call()]) or
-#'     a `data.frame` of vote tallys for the house It expects 3 columns. `state_abbrev` : the
+#'     a `data.frame` of vote tallies for the house It expects 3 columns. `state_abbrev` : the
 #'     2-letter U.S. state abbreviation; `district` : either `1` or `2` to distinguish between
 #'     each representative; `party` : `R`, `D` or `ID`; `position` : `yes`, `no`, `present`, `none` for
 #'     how the representative voted.

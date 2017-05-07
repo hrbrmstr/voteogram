@@ -8,8 +8,8 @@ knitr::opts_chunk$set(fig.retina=2)
 ```
 `voteogram` : U.S. House and Senate Voting Cartogram Generators
 
-Produce voting cartograms in the style of 'ProPublica'.
-
+'ProPublica' <https://projects.propublica.org/represent/> makes United States Congress member votes available and has developed their own unique cartogram to visually represent this data. Tools are provided to retrieve voting data, prepare voting data for plotting with 'ggplot2', create vote cartograms and theme them.
+    
 Ref: (these are replicated below)
 
 - <https://projects.propublica.org/represent/votes/115/senate/1/110>
@@ -18,7 +18,7 @@ Ref: (these are replicated below)
 You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One
 element of that list is the `data.frame` of vote results. You can pass in the _entire_
 object to either `_carto()` function and it'll "fortify" it before shunting it off
-to ggplot2.
+to ggplot2. Try to cache this data (I do, below, in R markdown chunk) as you're ticking credits off of ProPublica's monthly free S3 allotment each call. Consider donating to them if you're too lazy to cache the data ;-) 
 
 ### TODO
 
@@ -92,6 +92,16 @@ house_carto(rep) +
   labs(title="House Vote 256 - Passes American Health Care Act,\nRepealing Obamacare") +
   theme_ipsum_rc(plot_title_size = 24) +
   theme_voteogram()
+```
+
+They can be shrunk down well (though that means annotating them in some other way):
+
+```{r sen_small, fig.width=3, fig.height=2.1}
+senate_carto(sen) + theme_voteogram(legend=FALSE)
+```
+
+```{r rep_small, fig.width=3, fig.height=2.1}
+house_carto(rep) + theme_voteogram(legend=FALSE)
 ```
 
 ### Test Results

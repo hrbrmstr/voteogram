@@ -8,7 +8,7 @@ senate_carto(vote_tally)
 }
 \arguments{
 \item{senate_carto}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
-a \code{data.frame} of vote tallys for the senate. It expects 3 columns. \code{state_abbrev} : the
+a \code{data.frame} of vote tallies for the senate. It expects 3 columns. \code{state_abbrev} : the
 2-letter U.S. state abbreviation; \code{district} : either \code{1} or \code{2} to distinguish between
 each senator; \code{party} : \code{R}, \code{D} or \code{ID}; \code{position} : \code{yes}, \code{no}, \code{present}, \code{none} for
 how the senator voted.}

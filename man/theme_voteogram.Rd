@@ -4,7 +4,10 @@
 \alias{theme_voteogram}
 \title{voteogram ggplot2 theme}
 \usage{
-theme_voteogram()
+theme_voteogram(legend = TRUE)
+}
+\arguments{
+\item{legend}{if `FALSE` no legend is shown}
 }
 \description{
 voteogram ggplot2 theme

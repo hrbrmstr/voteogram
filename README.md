@@ -1,14 +1,14 @@
 
 `voteogram` : U.S. House and Senate Voting Cartogram Generators
 
-Produce voting cartograms in the style of 'ProPublica'.
+'ProPublica' <https://projects.propublica.org/represent/> makes United States Congress member votes available and has developed their own unique cartogram to visually represent this data. Tools are provided to retrieve voting data, prepare voting data for plotting with 'ggplot2', create vote cartograms and theme them.
 
 Ref: (these are replicated below)
 
 -   <https://projects.propublica.org/represent/votes/115/senate/1/110>
 -   <https://projects.propublica.org/represent/votes/115/house/1/256>
 
-You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One element of that list is the `data.frame` of vote results. You can pass in the *entire* object to either `_carto()` function and it'll "fortify" it before shunting it off to ggplot2.
+You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One element of that list is the `data.frame` of vote results. You can pass in the *entire* object to either `_carto()` function and it'll "fortify" it before shunting it off to ggplot2. Try to cache this data (I do, below, in R markdown chunk) as you're ticking credits off of ProPublica's monthly free S3 allotment each call. Consider donating to them if you're too lazy to cache the data ;-)
 
 ### TODO
 
@@ -132,6 +132,20 @@ house_carto(rep) +
 
 <img src="README_files/figure-markdown_github/rep-1.png" width="960" />
 
+They can be shrunk down well (though that means annotating them in some other way):
+
+``` r
+senate_carto(sen) + theme_voteogram(legend=FALSE)
+```
+
+<img src="README_files/figure-markdown_github/sen_small-1.png" width="288" />
+
+``` r
+house_carto(rep) + theme_voteogram(legend=FALSE)
+```
+
+<img src="README_files/figure-markdown_github/rep_small-1.png" width="288" />
+
 ### Test Results
 
 ``` r
@@ -141,7 +155,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun May  7 07:55:03 2017"
+    ## [1] "Sun May  7 08:21:44 2017"
 
 ``` r
 test_dir("tests/")

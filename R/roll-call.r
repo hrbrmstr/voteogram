@@ -1,15 +1,24 @@
 #' Get Voting Record for House or Senate By Number, Session & Roll Call Number
 #'
 #' @param critter one of `house` or `senate`
-#' @param number valid congress number (e.g. `115`)
+#' @param number valid congress number. ProPublica seems to have data going back to the 101st
+#'     Congress, so valid values are `101`-present Congress number (`115` as of the creation
+#'     date of the package).
 #' @param session a valid session numbner (i.e. `1` or `2` and valid for current year)
 #' @param rcall roll call vote number
+#' @return a `list`, one component of which is a `votes` `data.frame`
+#' @note Try to cache this data if at all possible. ProPublica is a non-profit organization
+#'     and this data comes from their Amazon S3 buckets. Every access in a given month
+#'     ticks down the "free" counter.
 #' @export
 roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L), rcall) {
 
   critter <-  match.arg(tolower(critter), c("house", "senate"))
+  session <- match.arg(as.integer(session), c(1L, 2L))
+
   number <- as.integer(number)
-  session <- as.integer(session)
+  if (number < 101L) stop("ProPublica does not have data going that far back", call.=FALSE)
+
   rcall <- as.integer(rcall)
 
   base_url <- "https://pp-projects-static.s3.amazonaws.com/congress/assets/%s_%s_%s_%s.json"

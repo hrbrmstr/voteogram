@@ -6,7 +6,10 @@
 \alias{voteogram-package}
 \title{U.S. House and Senate Voting Cartogram Generators}
 \description{
-Produce voting cartograms in the style of 'ProPublica'.
+ProPublica' <https://projects.propublica.org/represent/> makes United States
+Congress member votes available and has developed their own unique cartogram to visually
+represent this data. Tools are provided to retrieve voting data, prepare voting data
+for plotting with 'ggplot2', create vote cartograms and theme them.
 }
 \author{
 Bob Rudis (bob@rud.is)

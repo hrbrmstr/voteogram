@@ -6,7 +6,7 @@
 \alias{vote_carto_fill}
 \alias{vote_carto_color}
 \title{voteogram manual scale colors}
-\format{An object of class \code{character} of length 11.}
+\format{An object of class \code{character} of length 13.}
 \usage{
 vote_carto_fill
 

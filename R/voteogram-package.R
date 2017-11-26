@@ -12,6 +12,7 @@
 #' @importFrom dplyr left_join mutate tbl_df filter %>%
 #' @importFrom jsonlite fromJSON
 #' @importFrom scales ordinal
+#' @importFrom utils globalVariables
 NULL
 
 

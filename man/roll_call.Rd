@@ -29,3 +29,9 @@ Try to cache this data if at all possible. ProPublica is a non-profit organizati
     and this data comes from their Amazon S3 buckets. Every access in a given month
     ticks down the "free" counter.
 }
+\examples{
+\dontrun{
+rep <- roll_call("house", 115, 1, 256)
+sen <- roll_call("senate", 115, 1, 110)
+}
+}

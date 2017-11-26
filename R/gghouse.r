@@ -14,6 +14,14 @@
 #'     if you need a base theme. Also, GovTrack-style cartograms will have `coord_equal()`
 #'     applied by default.
 #' @export
+#' @examples \dontrun{
+#' rep <- roll_call("house", 115, 1, 256)
+#' house_carto(rep, pp_square=TRUE) +
+#'   labs(x=NULL, y=NULL,
+#'        title="House Vote 256 - Passes American Health Care Act, Repealing Obamacare") +
+#'   theme_ipsum_rc(plot_title_size = 24) +
+#'   theme_voteogram()
+#' }
 house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrack"), pp_square=FALSE) {
 
   if (inherits(vote_tally, "pprc")) vote_tally <- vote_tally$votes
@@ -30,14 +38,15 @@ house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrac
     vote_tally <- dplyr::mutate(vote_tally, fill=sprintf("%s-%s", toupper(party), tolower(position)))
     vote_tally <- dplyr::mutate(vote_tally, fill=ifelse(grepl("acant", fill), "Vacant", fill))
 
-    plot_df <- left_join(house_df, vote_tally, by="id")
+    plot_df <- dplyr::left_join(house_df, vote_tally, by="id")
 
     if (pp_square) {
 
       ggplot(plot_df) +
         geom_rect(aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax, fill=fill), color="white", size=0.25) +
         scale_y_reverse() +
-        scale_fill_manual(name=NULL, values=vote_carto_fill)
+        scale_fill_manual(name=NULL, values=vote_carto_fill) +
+        labs(x=NULL, y=NULL)
 
     } else {
 
@@ -48,7 +57,8 @@ house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrac
                   color="white", lineend="round", linejoin="round", size=0.5) +
         scale_y_reverse() +
         scale_color_manual(name=NULL, values=vote_carto_color) +
-        scale_fill_manual(name=NULL, values=vote_carto_fill)
+        scale_fill_manual(name=NULL, values=vote_carto_fill) +
+        labs(x=NULL, y=NULL)
 
     }
 
@@ -71,20 +81,9 @@ house_carto <- function(vote_tally, style = c("pp", "gt", "propublica", "govtrac
       geom_text(data=gt_house_labs, aes(x, y, label=lab), size=2.25, hjust=0, vjust=0) +
       scale_y_reverse() +
       scale_fill_manual(name=NULL, values=vote_carto_fill, na.value="white") +
-      coord_equal()
+      coord_equal() +
+      labs(x=NULL, y=NULL)
 
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

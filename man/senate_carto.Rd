@@ -7,7 +7,7 @@
 senate_carto(vote_tally)
 }
 \arguments{
-\item{senate_carto}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
+\item{vote_tally}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
 a \code{data.frame} of vote tallies for the senate. It expects 3 columns. \code{state_abbrev} : the
 2-letter U.S. state abbreviation; \code{district} : either \code{1} or \code{2} to distinguish between
 each senator; \code{party} : \code{R}, \code{D} or \code{ID}; \code{position} : \code{yes}, \code{no}, \code{present}, \code{none} for
@@ -22,4 +22,13 @@ Produce a Senate cartogram
 \note{
 No "themeing" is applied to the returned ggplot2 object. You can use  \code{\link[=theme_voteogram]{theme_voteogram()}}
 if you need a base theme.
+}
+\examples{
+\dontrun{
+sen <- roll_call("senate", 115, 1, 110)
+senate_carto(sen) +
+  labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
+  theme_ipsum_rc(plot_title_size = 24) +
+  theme_voteogram()
+}
 }

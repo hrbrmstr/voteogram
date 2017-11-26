@@ -1,7 +1,7 @@
 #' Produce a Senate cartogram
 #'
 #' @md
-#' @param senate_carto either a `pprc` object (the result of a call to [roll_call()]) or
+#' @param vote_tally either a `pprc` object (the result of a call to [roll_call()]) or
 #'     a `data.frame` of vote tallies for the senate. It expects 3 columns. `state_abbrev` : the
 #'     2-letter U.S. state abbreviation; `district` : either `1` or `2` to distinguish between
 #'     each senator; `party` : `R`, `D` or `ID`; `position` : `yes`, `no`, `present`, `none` for
@@ -10,6 +10,13 @@
 #' @note No "themeing" is applied to the returned ggplot2 object. You can use  [theme_voteogram()]
 #'     if you need a base theme.
 #' @export
+#' @examples \dontrun{
+#' sen <- roll_call("senate", 115, 1, 110)
+#' senate_carto(sen) +
+#'   labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
+#'   theme_ipsum_rc(plot_title_size = 24) +
+#'   theme_voteogram()
+#' }
 senate_carto <- function(vote_tally) {
 
   if (inherits(vote_tally, "pprc")) vote_tally <- vote_tally$votes
@@ -22,12 +29,13 @@ senate_carto <- function(vote_tally) {
   vote_tally <- dplyr::mutate(vote_tally, fill=sprintf("%s-%s", toupper(party), tolower(position)))
   vote_tally <- dplyr::mutate(vote_tally, fill=ifelse(grepl("acant", fill), "Vacant", fill))
 
-  plot_df <- left_join(senate_df, vote_tally, by="id")
+  plot_df <- dplyr::left_join(senate_df, vote_tally, by="id")
 
   ggplot(plot_df) +
     geom_rect(aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax, fill=fill), color="white", size=0.25) +
     scale_y_reverse() +
-    scale_fill_manual(name=NULL, values=vote_carto_fill)
+    scale_fill_manual(name=NULL, values=vote_carto_fill) +
+    labs(x=NULL, y=NULL)
 
 }
 

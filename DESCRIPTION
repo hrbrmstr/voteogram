@@ -1,8 +1,8 @@
 Package: voteogram
 Type: Package
 Title: United States House and Senate Voting Cartogram Generators
-Version: 0.1.0
-Date: 2017-05-06
+Version: 0.2.0
+Date: 2017-11-26
 Authors@R: c(
       person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
       person("ProPublica", comment = "Cartogram SVGs used to make the plot data.frames", role = c("cph")),
@@ -18,11 +18,16 @@ BugReports: https://github.com/hrbrmstr/voteogram/issues
 License: AGPL
 Suggests:
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 Depends:
     R (>= 3.2.0)
 Imports:
     ggplot2,
     dplyr,
-    scales
+    scales,
+    jsonlite,
+    utils
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr

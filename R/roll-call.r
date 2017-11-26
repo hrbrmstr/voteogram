@@ -11,6 +11,10 @@
 #'     and this data comes from their Amazon S3 buckets. Every access in a given month
 #'     ticks down the "free" counter.
 #' @export
+#' @examples \dontrun{
+#' rep <- roll_call("house", 115, 1, 256)
+#' sen <- roll_call("senate", 115, 1, 110)
+#' }
 roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L), rcall) {
 
   critter <-  match.arg(tolower(critter), c("house", "senate"))

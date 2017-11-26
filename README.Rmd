@@ -6,7 +6,16 @@ editor_options:
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.retina=2)
 ```
-`voteogram` : U.S. House and Senate Voting Cartogram Generators
+
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/voteogram.svg?branch=master)](https://travis-ci.org/hrbrmstr/voteogram)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/voteogram?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/voteogram)
+[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/voteogram/master.svg)](https://codecov.io/github/hrbrmstr/voteogram?branch=master)
+
+# voteogram
+
+U.S. House and Senate Voting Cartogram Generators
+
+## Description
 
 'ProPublica' <https://projects.propublica.org/represent/> makes United States Congress member votes available and has developed their own unique cartogram to visually represent this data as has 'GovTrack' <URL_AT_SOME_POINT> . Tools are provided to retrieve voting data, prepare voting data for plotting with 'ggplot2', create vote cartograms and theme them.
     
@@ -19,17 +28,20 @@ Ref: (these are replicated below)
 You can grab the results of a roll call vote (House or Senate) with `roll_call()`. It returns a `list` with a ton of information that you can use outside this package. One
 element of that list is the `data.frame` of vote results. You can pass in the _entire_
 object to either `_carto()` function and it'll "fortify" it before shunting it off
-to ggplot2. Try to cache this data (I do, below, in R markdown chunk) as you're ticking credits off of ProPublica's monthly free S3 allotment each call. Consider donating to them if you're too lazy to cache the data ;-) 
+to ggplot2. Try to cache this data (I do, below, in R markdown chunk) as you're ticking credits off of ProPublica's monthly free S3 allotment each call. Consider donating to them if you're too lazy to cache the data). 
 
-### TODO
+## TODO
 
 - <strike>House cartogram generator</strike>
 - <strike>Param bulletproofing (param checking, et al)</strike>
 - <strike>Add in ability to retrieve votes from ProPublica.</strike>
 - <strike>Make a `voteogram` theme</strike>
 - <strike>GovTrack Senate cartogram polygons</strike> (this is pretty much covered in [`ggparliament`](https://github.com/leeper/ggparliament) since GT only has the seat view for the Senate)
-- "Independent" colors for "not voting" & "present"
+- <strike>"Independent" colors for "not voting" & "present"</strike>
+- <strike>Vignette</strike>
 - `htmlwidget` version
+
+## What's In The Tin
 
 The following functions are implemented:
 
@@ -43,6 +55,8 @@ Helpers:
 - `print.pprc`:	Better default 'print' function for `roll_call()` (`pprc`) objects
 - `fortify.pprc` : In case you want to use the voting data frame from a `roll_call()` (`pprc`) object in your own plots and forget to just `$votes` it out. #helping
 
+## Working with `voteogram`
+
 ### Installation
 
 ```{r eval=FALSE}
@@ -53,13 +67,12 @@ devtools::install_github("hrbrmstr/voteogram")
 options(width=120)
 ```
 
-### Usage
+### Basic Usage
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(voteogram)
-library(jsonlite)
 library(hrbrthemes)
-library(tidyverse)
+library(ggplot2)
 
 # current verison
 packageVersion("voteogram")
@@ -144,3 +157,6 @@ date()
 test_dir("tests/")
 ```
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

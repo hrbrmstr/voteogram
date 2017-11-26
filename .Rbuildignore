@@ -1,14 +1,13 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^README\.*Rmd$
-^README\.*html$
+^README.*
 ^NOTES\.*Rmd$
 ^NOTES\.*html$
 ^\.codecov\.yml$
 ^README_files$
 ^doc$
-^README_cache$
 ^appveyor\.yml$
 ^codecov\.yml$
 ^CONDUCT\.md$
+^cran-comments\.md$

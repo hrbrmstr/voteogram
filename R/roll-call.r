@@ -12,6 +12,7 @@
 #'     ticks down the "free" counter.
 #' @export
 #' @examples \dontrun{
+#' # these make API calls so they aren't run in the examples
 #' rep <- roll_call("house", 115, 1, 256)
 #' sen <- roll_call("senate", 115, 1, 110)
 #' }

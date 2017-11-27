@@ -32,11 +32,12 @@ applied by default.
 }
 \examples{
 \dontrun{
+# what you'd normally do
 rep <- roll_call("house", 115, 1, 256)
-house_carto(rep, pp_square=TRUE) +
-  labs(x=NULL, y=NULL,
-       title="House Vote 256 - Passes American Health Care Act, Repealing Obamacare") +
-  theme_ipsum_rc(plot_title_size = 24) +
-  theme_voteogram()
 }
+
+# using a saved object
+rep <- readRDS(system.file("extdata", "rep.rds", package="voteogram"))
+
+house_carto(rep, pp_square=TRUE)
 }

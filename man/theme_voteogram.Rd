@@ -15,10 +15,13 @@ an easy way to turn the legend on or off.
 }
 \examples{
 \dontrun{
+# what you'd normally do
 sen <- roll_call("senate", 115, 1, 110)
-senate_carto(sen) +
-  labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
-  theme_ipsum_rc(plot_title_size = 24) +
-  theme_voteogram()
 }
+
+# using a saved object
+sen <- readRDS(system.file("extdata", "sen.rds", package="voteogram"))
+
+senate_carto(sen) +
+  theme_voteogram()
 }

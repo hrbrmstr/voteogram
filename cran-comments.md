@@ -17,6 +17,8 @@ This is a new release, so there are no reverse dependencies.
 
 ---
 
-Some tests and examples do not run on CRAN due to being calls to external APIs. These are run on Travis (<https://travis-ci.org/hrbrmstr/voteogram>), AppVeyor (<https://ci.appveyor.com/project/hrbrmstr/voteogram>) and when building the README so they are tested frequently.
+Some tests and parts of examples do not run on CRAN due to being calls to external APIs. These are run on Travis (<https://travis-ci.org/hrbrmstr/voteogram>), AppVeyor (<https://ci.appveyor.com/project/hrbrmstr/voteogram>) and when building the README so they are tested frequently.
+
+`roll_call()` cannot (well, shouldn't) be tested on CRAN as it makes external API calls to a service run bu a non-profit.
 
 Code coverage is 73% <https://codecov.io/github/hrbrmstr/voteogram?branch=master> and will be improved for the next submission.

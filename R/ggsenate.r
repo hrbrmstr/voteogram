@@ -11,12 +11,14 @@
 #'     if you need a base theme.
 #' @export
 #' @examples \dontrun{
+#' # what you'd normally do
 #' sen <- roll_call("senate", 115, 1, 110)
-#' senate_carto(sen) +
-#'   labs(title="Senate Vote 110 - Invokes Cloture on Neil Gorsuch Nomination") +
-#'   theme_ipsum_rc(plot_title_size = 24) +
-#'   theme_voteogram()
 #' }
+#'
+#' # Using a saved object
+#' sen <- readRDS(system.file("extdata", "sen.rds", package="voteogram"))
+#'
+#' senate_carto(sen)
 senate_carto <- function(vote_tally) {
 
   if (inherits(vote_tally, "pprc")) vote_tally <- vote_tally$votes

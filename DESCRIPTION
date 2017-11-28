@@ -1,10 +1,11 @@
 Package: voteogram
 Type: Package
 Title: United States House and Senate Voting Cartogram Generators
-Version: 0.2.0
+Version: 0.3.0
 Date: 2017-11-26
 Authors@R: c(
-      person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre")),
+    person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
+           comment = c(ORCID = "0000-0001-5670-2640")),
       person("ProPublica", comment = "Cartogram SVGs used to make the plot data.frames", role = c("cph")),
       person("GovTrack", comment = "Cartogram SVG used to make the plot data.frame", role = c("cph"))
     )

@@ -87,7 +87,7 @@ library(ggplot2)
 packageVersion("voteogram")
 ```
 
-    ## [1] '0.2.0'
+    ## [1] '0.3.1'
 
 ``` r
 sen <- roll_call("senate", 115, 1, 110)
@@ -95,62 +95,136 @@ rep <- roll_call("house", 115, 1, 256)
 ```
 
 ``` r
-sen
+str(sen)
 ```
 
-    ## 115th Congress / Session: 1 / Senate Roll Call: 110 / April  6, 2017
-    ## 
-    ## Neil M. Gorsuch, of Colorado, to be an Associate Justice of the Supreme Court of the United States
-    ## 
-    ## Result: Cloture Motion Agreed to
+    ## List of 29
+    ##  $ vote_id              : chr "S_115_1_110"
+    ##  $ chamber              : chr "Senate"
+    ##  $ year                 : int 2017
+    ##  $ congress             : chr "115"
+    ##  $ session              : chr "1"
+    ##  $ roll_call            : int 110
+    ##  $ needed_to_pass       : int 51
+    ##  $ date_of_vote         : chr "April  6, 2017"
+    ##  $ time_of_vote         : chr "12:35 PM"
+    ##  $ result               : chr "Cloture Motion Agreed to"
+    ##  $ vote_type            : chr "1/2"
+    ##  $ question             : chr "On the Cloture Motion"
+    ##  $ description          : chr "Neil M. Gorsuch, of Colorado, to be an Associate Justice of the Supreme Court of the United States"
+    ##  $ nyt_title            : chr "On the Cloture Motion"
+    ##  $ total_yes            : int 55
+    ##  $ total_no             : int 45
+    ##  $ total_not_voting     : int 0
+    ##  $ gop_yes              : int 52
+    ##  $ gop_no               : int 0
+    ##  $ gop_not_voting       : int 0
+    ##  $ dem_yes              : int 3
+    ##  $ dem_no               : int 43
+    ##  $ dem_not_voting       : int 0
+    ##  $ ind_yes              : int 0
+    ##  $ ind_no               : int 2
+    ##  $ ind_not_voting       : int 0
+    ##  $ dem_majority_position: chr "No"
+    ##  $ gop_majority_position: chr "Yes"
+    ##  $ votes                :Classes 'tbl_df', 'tbl' and 'data.frame':   100 obs. of  11 variables:
+    ##   ..$ bioguide_id         : chr [1:100] "A000360" "B001230" "B001261" "B001267" ...
+    ##   ..$ role_id             : int [1:100] 526 481 498 561 535 547 507 551 480 555 ...
+    ##   ..$ member_name         : chr [1:100] "Lamar  Alexander" "Tammy Baldwin" "John Barrasso" "Michael Bennet" ...
+    ##   ..$ sort_name           : chr [1:100] "Alexander" "Baldwin" "Barrasso" "Bennet" ...
+    ##   ..$ party               : chr [1:100] "R" "D" "R" "D" ...
+    ##   ..$ state_abbrev        : chr [1:100] "TN" "WI" "WY" "CO" ...
+    ##   ..$ display_state_abbrev: chr [1:100] "Tenn." "Wis." "Wyo." "Colo." ...
+    ##   ..$ district            : chr [1:100] "2" "1" "1" "1" ...
+    ##   ..$ position            : chr [1:100] "Yes" "No" "Yes" "No" ...
+    ##   ..$ dw_nominate         : logi [1:100] NA NA NA NA NA NA ...
+    ##   ..$ pp_id               : chr [1:100] "TN" "WI" "WY" "CO" ...
+    ##  - attr(*, "class")= chr [1:2] "pprc" "list"
 
 ``` r
 sen$votes
 ```
 
     ## # A tibble: 100 x 11
-    ##    bioguide_id role_id        member_name  sort_name party state_abbrev display_state_abbrev district position
-    ##  *       <chr>   <int>              <chr>      <chr> <chr>        <chr>                <chr>    <chr>    <chr>
-    ##  1     A000360     526   Lamar  Alexander  Alexander     R           TN                Tenn.        2      Yes
-    ##  2     B001230     481      Tammy Baldwin    Baldwin     D           WI                 Wis.        1       No
-    ##  3     B001261     498      John Barrasso   Barrasso     R           WY                 Wyo.        1      Yes
-    ##  4     B001267     561     Michael Bennet     Bennet     D           CO                Colo.        1       No
-    ##  5     B001277     535 Richard Blumenthal Blumenthal     D           CT                Conn.        2       No
-    ##  6     B000575     547         Roy  Blunt      Blunt     R           MO                  Mo.        2      Yes
-    ##  7     B001288     507       Cory  Booker     Booker     D           NJ                 N.J.        2       No
-    ##  8     B001236     551      John  Boozman    Boozman     R           AR                 Ark.        1      Yes
-    ##  9     B000944     480     Sherrod  Brown      Brown     D           OH                 Ohio        1       No
-    ## 10     B001135     555    Richard M. Burr       Burr     R           NC                 N.C.        1      Yes
-    ## # ... with 90 more rows, and 2 more variables: dw_nominate <lgl>, pp_id <chr>
+    ##    bioguide_id role_id member_name   sort_name party state_abbrev display_state_ab… district position dw_nominate pp_id
+    ##  * <chr>         <int> <chr>         <chr>     <chr> <chr>        <chr>             <chr>    <chr>    <lgl>       <chr>
+    ##  1 A000360         526 Lamar  Alexa… Alexander R     TN           Tenn.             2        Yes      NA          TN   
+    ##  2 B001230         481 Tammy Baldwin Baldwin   D     WI           Wis.              1        No       NA          WI   
+    ##  3 B001261         498 John Barrasso Barrasso  R     WY           Wyo.              1        Yes      NA          WY   
+    ##  4 B001267         561 Michael Benn… Bennet    D     CO           Colo.             1        No       NA          CO   
+    ##  5 B001277         535 Richard Blum… Blumenth… D     CT           Conn.             2        No       NA          CT   
+    ##  6 B000575         547 Roy  Blunt    Blunt     R     MO           Mo.               2        Yes      NA          MO   
+    ##  7 B001288         507 Cory  Booker  Booker    D     NJ           N.J.              2        No       NA          NJ   
+    ##  8 B001236         551 John  Boozman Boozman   R     AR           Ark.              1        Yes      NA          AR   
+    ##  9 B000944         480 Sherrod  Bro… Brown     D     OH           Ohio              1        No       NA          OH   
+    ## 10 B001135         555 Richard M. B… Burr      R     NC           N.C.              1        Yes      NA          NC   
+    ## # ... with 90 more rows
 
 ``` r
-rep
+str(rep)
 ```
 
-    ## 115th Congress / Session: 1 / House Roll Call: 256 / May  4, 2017
-    ## 
-    ## American Health Care Act
-    ## 
-    ## Result: Passed
+    ## List of 29
+    ##  $ vote_id              : chr "H_115_1_256"
+    ##  $ chamber              : chr "House"
+    ##  $ year                 : int 2017
+    ##  $ congress             : chr "115"
+    ##  $ session              : chr "1"
+    ##  $ roll_call            : int 256
+    ##  $ needed_to_pass       : int 216
+    ##  $ date_of_vote         : chr "May  4, 2017"
+    ##  $ time_of_vote         : chr "02:18 PM"
+    ##  $ result               : chr "Passed"
+    ##  $ vote_type            : chr "RECORDED VOTE"
+    ##  $ question             : chr "On Passage"
+    ##  $ description          : chr "American Health Care Act"
+    ##  $ nyt_title            : chr "On Passage"
+    ##  $ total_yes            : int 217
+    ##  $ total_no             : int 213
+    ##  $ total_not_voting     : int 1
+    ##  $ gop_yes              : int 217
+    ##  $ gop_no               : int 20
+    ##  $ gop_not_voting       : int 1
+    ##  $ dem_yes              : int 0
+    ##  $ dem_no               : int 193
+    ##  $ dem_not_voting       : int 0
+    ##  $ ind_yes              : int 0
+    ##  $ ind_no               : int 0
+    ##  $ ind_not_voting       : int 0
+    ##  $ dem_majority_position: chr "No"
+    ##  $ gop_majority_position: chr "Yes"
+    ##  $ votes                :Classes 'tbl_df', 'tbl' and 'data.frame':   435 obs. of  11 variables:
+    ##   ..$ bioguide_id         : chr [1:435] "A000374" "A000370" "A000055" "A000371" ...
+    ##   ..$ role_id             : int [1:435] 274 294 224 427 268 131 388 320 590 206 ...
+    ##   ..$ member_name         : chr [1:435] "Ralph Abraham" "Alma  Adams" "Robert B. Aderholt" "Pete Aguilar" ...
+    ##   ..$ sort_name           : chr [1:435] "Abraham" "Adams" "Aderholt" "Aguilar" ...
+    ##   ..$ party               : chr [1:435] "R" "D" "R" "D" ...
+    ##   ..$ state_abbrev        : chr [1:435] "LA" "NC" "AL" "CA" ...
+    ##   ..$ display_state_abbrev: chr [1:435] "La." "N.C." "Ala." "Calif." ...
+    ##   ..$ district            : int [1:435] 5 12 4 31 12 3 2 19 36 2 ...
+    ##   ..$ position            : chr [1:435] "Yes" "No" "Yes" "No" ...
+    ##   ..$ dw_nominate         : logi [1:435] NA NA NA NA NA NA ...
+    ##   ..$ pp_id               : chr [1:435] "LA_5" "NC_12" "AL_4" "CA_31" ...
+    ##  - attr(*, "class")= chr [1:2] "pprc" "list"
 
 ``` r
 fortify(rep)
 ```
 
     ## # A tibble: 435 x 11
-    ##    bioguide_id role_id        member_name sort_name party state_abbrev display_state_abbrev district position
-    ##  *       <chr>   <int>              <chr>     <chr> <chr>        <chr>                <chr>    <int>    <chr>
-    ##  1     A000374     274      Ralph Abraham   Abraham     R           LA                  La.        5      Yes
-    ##  2     A000370     294        Alma  Adams     Adams     D           NC                 N.C.       12       No
-    ##  3     A000055     224 Robert B. Aderholt  Aderholt     R           AL                 Ala.        4      Yes
-    ##  4     A000371     427       Pete Aguilar   Aguilar     D           CA               Calif.       31       No
-    ##  5     A000372     268         Rick Allen     Allen     R           GA                  Ga.       12      Yes
-    ##  6     A000367     131       Justin Amash     Amash     R           MI                Mich.        3      Yes
-    ##  7     A000369     388        Mark Amodei    Amodei     R           NV                 Nev.        2      Yes
-    ##  8     A000375     320    Jodey Arrington Arrington     R           TX                Texas       19      Yes
-    ##  9     B001291     590        Brian Babin     Babin     R           TX                Texas       36      Yes
-    ## 10     B001298     206          Don Bacon     Bacon     R           NE                 Neb.        2      Yes
-    ## # ... with 425 more rows, and 2 more variables: dw_nominate <lgl>, pp_id <chr>
+    ##    bioguide_id role_id member_name   sort_name party state_abbrev display_state_ab… district position dw_nominate pp_id
+    ##  * <chr>         <int> <chr>         <chr>     <chr> <chr>        <chr>                <int> <chr>    <lgl>       <chr>
+    ##  1 A000374         274 Ralph Abraham Abraham   R     LA           La.                      5 Yes      NA          LA_5 
+    ##  2 A000370         294 Alma  Adams   Adams     D     NC           N.C.                    12 No       NA          NC_12
+    ##  3 A000055         224 Robert B. Ad… Aderholt  R     AL           Ala.                     4 Yes      NA          AL_4 
+    ##  4 A000371         427 Pete Aguilar  Aguilar   D     CA           Calif.                  31 No       NA          CA_31
+    ##  5 A000372         268 Rick Allen    Allen     R     GA           Ga.                     12 Yes      NA          GA_12
+    ##  6 A000367         131 Justin Amash  Amash     R     MI           Mich.                    3 Yes      NA          MI_3 
+    ##  7 A000369         388 Mark Amodei   Amodei    R     NV           Nev.                     2 Yes      NA          NV_2 
+    ##  8 A000375         320 Jodey Arring… Arrington R     TX           Texas                   19 Yes      NA          TX_19
+    ##  9 B001291         590 Brian Babin   Babin     R     TX           Texas                   36 Yes      NA          TX_36
+    ## 10 B001298         206 Don Bacon     Bacon     R     NE           Neb.                     2 Yes      NA          NE_2 
+    ## # ... with 425 more rows
 
 ### ProPublica
 
@@ -227,16 +301,23 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun Nov 26 07:39:47 2017"
+    ## [1] "Sun Sep 16 17:11:30 2018"
 
 ``` r
 test_dir("tests/")
 ```
 
-    ## testthat results ========================================================================================================
+    ## ✔ | OK F W S | Context
+    ## ══ testthat results  ════════════════════════════════════════════════════════════════════════════
     ## OK: 7 SKIPPED: 0 FAILED: 0
     ## 
-    ## DONE ===================================================================================================================
+    ## ══ Results ══════════════════════════════════════════════════════════════════════════════════════
+    ## Duration: 0.6 s
+    ## 
+    ## OK:       0
+    ## Failed:   0
+    ## Warnings: 0
+    ## Skipped:  0
 
 ## Code of Conduct
 

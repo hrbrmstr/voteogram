@@ -40,13 +40,13 @@ rep <- readRDS(system.file("extdata", "rep.rds", package="voteogram"))
 Their structures look the same and there is a print-method to make the console output easier on the eyes:
 
 ```{r}
-sen
+str(sen)
 
 sen$votes
 ```
 
 ```{r}
-rep
+str(rep)
 
 fortify(rep)
 ```

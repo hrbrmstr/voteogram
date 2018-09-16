@@ -84,13 +84,13 @@ rep <- roll_call("house", 115, 1, 256)
 ```
 
 ```{r}
-sen
+str(sen)
 
 sen$votes
 ```
 
 ```{r}
-rep
+str(rep)
 
 fortify(rep)
 ```

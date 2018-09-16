@@ -1,8 +1,8 @@
 Package: voteogram
 Type: Package
 Title: United States House and Senate Voting Cartogram Generators
-Version: 0.3.0
-Date: 2017-11-26
+Version: 0.3.1
+Date: 2018-09-16
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640")),
@@ -16,6 +16,7 @@ Description: 'ProPublica' <https://projects.propublica.org/represent/> makes Uni
     for plotting with 'ggplot2', create vote cartograms and theme them.
 URL: https://github.com/hrbrmstr/voteogram
 BugReports: https://github.com/hrbrmstr/voteogram/issues
+Encoding: UTF-8
 License: AGPL
 Suggests:
     testthat,
@@ -30,5 +31,5 @@ Imports:
     scales,
     jsonlite,
     utils
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr

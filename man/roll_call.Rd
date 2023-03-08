@@ -4,8 +4,7 @@
 \alias{roll_call}
 \title{Get Voting Record for House or Senate By Number, Session & Roll Call Number}
 \usage{
-roll_call(critter = c("house", "senate"), number, session = c(1L, 2L),
-  rcall)
+roll_call(critter = c("house", "senate"), number, session = c(1L, 2L), rcall)
 }
 \arguments{
 \item{critter}{one of `house` or `senate`}

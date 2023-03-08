@@ -1,11 +1,4 @@
 
-[![Travis-CI Build
-Status](https://travis-ci.org/hrbrmstr/voteogram.svg?branch=master)](https://travis-ci.org/hrbrmstr/voteogram)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/voteogram?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/voteogram)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/hrbrmstr/voteogram/master.svg)](https://codecov.io/github/hrbrmstr/voteogram?branch=master)
-
 # voteogram
 
 U.S. House and Senate Voting Cartogram Generators
@@ -21,9 +14,9 @@ and theme them.
 
 Ref: (these are replicated below)
 
-  - <https://projects.propublica.org/represent/votes/115/senate/1/110>
-  - <https://projects.propublica.org/represent/votes/115/house/1/256>
-  - <https://www.govtrack.us/congress/votes/115-2017/h256>
+- <https://projects.propublica.org/represent/votes/115/senate/1/110>
+- <https://projects.propublica.org/represent/votes/115/house/1/256>
+- <https://www.govtrack.us/congress/votes/115-2017/h256>
 
 You can grab the results of a roll call vote (House or Senate) with
 `roll_call()`. It returns a `list` with a ton of information that you
@@ -37,43 +30,43 @@ data).
 
 ## TODO
 
-  - <strike>House cartogram generator</strike>
-  - <strike>Param bulletproofing (param checking, et al)</strike>
-  - <strike>Add in ability to retrieve votes from ProPublica.</strike>
-  - <strike>Make a `voteogram` theme</strike>
-  - <strike>GovTrack Senate cartogram polygons</strike> (this is pretty
-    much covered in
-    [`ggparliament`](https://github.com/leeper/ggparliament) since GT
-    only has the seat view for the Senate)
-  - <strike>“Independent” colors for “not voting” & “present”</strike>
-  - <strike>Vignette</strike>
-  - `htmlwidget` version
+- <strike>House cartogram generator</strike>
+- <strike>Param bulletproofing (param checking, et al)</strike>
+- <strike>Add in ability to retrieve votes from ProPublica.</strike>
+- <strike>Make a `voteogram` theme</strike>
+- <strike>GovTrack Senate cartogram polygons</strike> (this is pretty
+  much covered in
+  [`ggparliament`](https://github.com/leeper/ggparliament) since GT only
+  has the seat view for the Senate)
+- <strike>“Independent” colors for “not voting” & “present”</strike>
+- <strike>Vignette</strike>
+- `htmlwidget` version
 
 ## What’s In The Tin
 
 The following functions are implemented:
 
-  - `house_carto`: Produce a ProPublica- or GovTrack-style House roll
-    call vote cartogram
-  - `senate_carto`: Produce a Senate cartogram
-  - `roll_call`: Get Voting Record for House or Senate By Number,
-    Session & Roll Call Number
+- `house_carto`: Produce a ProPublica- or GovTrack-style House roll call
+  vote cartogram
+- `senate_carto`: Produce a Senate cartogram
+- `roll_call`: Get Voting Record for House or Senate By Number, Session
+  & Roll Call Number
 
 Helpers:
 
-  - `theme_voteogram`: voteogram ggplot2 theme
-  - `print.pprc`: Better default ‘print’ function for `roll_call()`
-    (`pprc`) objects
-  - `fortify.pprc` : In case you want to use the voting data frame from
-    a `roll_call()` (`pprc`) object in your own plots and forget to just
-    `$votes` it out. \#helping
+- `theme_voteogram`: voteogram ggplot2 theme
+- `print.pprc`: Better default ‘print’ function for `roll_call()`
+  (`pprc`) objects
+- `fortify.pprc` : In case you want to use the voting data frame from a
+  `roll_call()` (`pprc`) object in your own plots and forget to just
+  `$votes` it out. \#helping
 
 ## Working with `voteogram`
 
 ### Installation
 
 ``` r
-devtools::install_github("hrbrmstr/voteogram")
+remotes::install_github("hrbrmstr/voteogram")
 ```
 
 ### Basic Usage
@@ -87,7 +80,7 @@ library(ggplot2)
 packageVersion("voteogram")
 ```
 
-    ## [1] '0.3.1'
+    ## [1] '0.3.2'
 
 ``` r
 sen <- roll_call("senate", 115, 1, 110)
@@ -127,7 +120,7 @@ str(sen)
     ##  $ ind_not_voting       : int 0
     ##  $ dem_majority_position: chr "No"
     ##  $ gop_majority_position: chr "Yes"
-    ##  $ votes                :Classes 'tbl_df', 'tbl' and 'data.frame':   100 obs. of  11 variables:
+    ##  $ votes                : tibble [100 × 11] (S3: tbl_df/tbl/data.frame)
     ##   ..$ bioguide_id         : chr [1:100] "A000360" "B001230" "B001261" "B001267" ...
     ##   ..$ role_id             : int [1:100] 526 481 498 561 535 547 507 551 480 555 ...
     ##   ..$ member_name         : chr [1:100] "Lamar  Alexander" "Tammy Baldwin" "John Barrasso" "Michael Bennet" ...
@@ -145,20 +138,20 @@ str(sen)
 sen$votes
 ```
 
-    ## # A tibble: 100 x 11
-    ##    bioguide_id role_id member_name   sort_name party state_abbrev display_state_ab… district position dw_nominate pp_id
-    ##  * <chr>         <int> <chr>         <chr>     <chr> <chr>        <chr>             <chr>    <chr>    <lgl>       <chr>
-    ##  1 A000360         526 Lamar  Alexa… Alexander R     TN           Tenn.             2        Yes      NA          TN   
-    ##  2 B001230         481 Tammy Baldwin Baldwin   D     WI           Wis.              1        No       NA          WI   
-    ##  3 B001261         498 John Barrasso Barrasso  R     WY           Wyo.              1        Yes      NA          WY   
-    ##  4 B001267         561 Michael Benn… Bennet    D     CO           Colo.             1        No       NA          CO   
-    ##  5 B001277         535 Richard Blum… Blumenth… D     CT           Conn.             2        No       NA          CT   
-    ##  6 B000575         547 Roy  Blunt    Blunt     R     MO           Mo.               2        Yes      NA          MO   
-    ##  7 B001288         507 Cory  Booker  Booker    D     NJ           N.J.              2        No       NA          NJ   
-    ##  8 B001236         551 John  Boozman Boozman   R     AR           Ark.              1        Yes      NA          AR   
-    ##  9 B000944         480 Sherrod  Bro… Brown     D     OH           Ohio              1        No       NA          OH   
-    ## 10 B001135         555 Richard M. B… Burr      R     NC           N.C.              1        Yes      NA          NC   
-    ## # ... with 90 more rows
+    ## # A tibble: 100 × 11
+    ##    bioguide_id role_id member_name        sort_name  party state_abbrev display_state_ab…¹ distr…² posit…³ dw_no…⁴ pp_id
+    ##    <chr>         <int> <chr>              <chr>      <chr> <chr>        <chr>              <chr>   <chr>   <lgl>   <chr>
+    ##  1 A000360         526 Lamar  Alexander   Alexander  R     TN           Tenn.              2       Yes     NA      TN   
+    ##  2 B001230         481 Tammy Baldwin      Baldwin    D     WI           Wis.               1       No      NA      WI   
+    ##  3 B001261         498 John Barrasso      Barrasso   R     WY           Wyo.               1       Yes     NA      WY   
+    ##  4 B001267         561 Michael Bennet     Bennet     D     CO           Colo.              1       No      NA      CO   
+    ##  5 B001277         535 Richard Blumenthal Blumenthal D     CT           Conn.              2       No      NA      CT   
+    ##  6 B000575         547 Roy  Blunt         Blunt      R     MO           Mo.                2       Yes     NA      MO   
+    ##  7 B001288         507 Cory  Booker       Booker     D     NJ           N.J.               2       No      NA      NJ   
+    ##  8 B001236         551 John  Boozman      Boozman    R     AR           Ark.               1       Yes     NA      AR   
+    ##  9 B000944         480 Sherrod  Brown     Brown      D     OH           Ohio               1       No      NA      OH   
+    ## 10 B001135         555 Richard M. Burr    Burr       R     NC           N.C.               1       Yes     NA      NC   
+    ## # … with 90 more rows, and abbreviated variable names ¹​display_state_abbrev, ²​district, ³​position, ⁴​dw_nominate
 
 ``` r
 str(rep)
@@ -193,7 +186,7 @@ str(rep)
     ##  $ ind_not_voting       : int 0
     ##  $ dem_majority_position: chr "No"
     ##  $ gop_majority_position: chr "Yes"
-    ##  $ votes                :Classes 'tbl_df', 'tbl' and 'data.frame':   435 obs. of  11 variables:
+    ##  $ votes                : tibble [435 × 11] (S3: tbl_df/tbl/data.frame)
     ##   ..$ bioguide_id         : chr [1:435] "A000374" "A000370" "A000055" "A000371" ...
     ##   ..$ role_id             : int [1:435] 274 294 224 427 268 131 388 320 590 206 ...
     ##   ..$ member_name         : chr [1:435] "Ralph Abraham" "Alma  Adams" "Robert B. Aderholt" "Pete Aguilar" ...
@@ -211,20 +204,20 @@ str(rep)
 fortify(rep)
 ```
 
-    ## # A tibble: 435 x 11
-    ##    bioguide_id role_id member_name   sort_name party state_abbrev display_state_ab… district position dw_nominate pp_id
-    ##  * <chr>         <int> <chr>         <chr>     <chr> <chr>        <chr>                <int> <chr>    <lgl>       <chr>
-    ##  1 A000374         274 Ralph Abraham Abraham   R     LA           La.                      5 Yes      NA          LA_5 
-    ##  2 A000370         294 Alma  Adams   Adams     D     NC           N.C.                    12 No       NA          NC_12
-    ##  3 A000055         224 Robert B. Ad… Aderholt  R     AL           Ala.                     4 Yes      NA          AL_4 
-    ##  4 A000371         427 Pete Aguilar  Aguilar   D     CA           Calif.                  31 No       NA          CA_31
-    ##  5 A000372         268 Rick Allen    Allen     R     GA           Ga.                     12 Yes      NA          GA_12
-    ##  6 A000367         131 Justin Amash  Amash     R     MI           Mich.                    3 Yes      NA          MI_3 
-    ##  7 A000369         388 Mark Amodei   Amodei    R     NV           Nev.                     2 Yes      NA          NV_2 
-    ##  8 A000375         320 Jodey Arring… Arrington R     TX           Texas                   19 Yes      NA          TX_19
-    ##  9 B001291         590 Brian Babin   Babin     R     TX           Texas                   36 Yes      NA          TX_36
-    ## 10 B001298         206 Don Bacon     Bacon     R     NE           Neb.                     2 Yes      NA          NE_2 
-    ## # ... with 425 more rows
+    ## # A tibble: 435 × 11
+    ##    bioguide_id role_id member_name        sort_name party state_abbrev display_state_abb…¹ distr…² posit…³ dw_no…⁴ pp_id
+    ##    <chr>         <int> <chr>              <chr>     <chr> <chr>        <chr>                 <int> <chr>   <lgl>   <chr>
+    ##  1 A000374         274 Ralph Abraham      Abraham   R     LA           La.                       5 Yes     NA      LA_5 
+    ##  2 A000370         294 Alma  Adams        Adams     D     NC           N.C.                     12 No      NA      NC_12
+    ##  3 A000055         224 Robert B. Aderholt Aderholt  R     AL           Ala.                      4 Yes     NA      AL_4 
+    ##  4 A000371         427 Pete Aguilar       Aguilar   D     CA           Calif.                   31 No      NA      CA_31
+    ##  5 A000372         268 Rick Allen         Allen     R     GA           Ga.                      12 Yes     NA      GA_12
+    ##  6 A000367         131 Justin Amash       Amash     R     MI           Mich.                     3 Yes     NA      MI_3 
+    ##  7 A000369         388 Mark Amodei        Amodei    R     NV           Nev.                      2 Yes     NA      NV_2 
+    ##  8 A000375         320 Jodey Arrington    Arrington R     TX           Texas                    19 Yes     NA      TX_19
+    ##  9 B001291         590 Brian Babin        Babin     R     TX           Texas                    36 Yes     NA      TX_36
+    ## 10 B001298         206 Don Bacon          Bacon     R     NE           Neb.                      2 Yes     NA      NE_2 
+    ## # … with 425 more rows, and abbreviated variable names ¹​display_state_abbrev, ²​district, ³​position, ⁴​dw_nominate
 
 ### ProPublica
 
@@ -301,23 +294,19 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun Sep 16 17:11:30 2018"
+    ## [1] "Wed Mar  8 06:36:49 2023"
 
 ``` r
 test_dir("tests/")
 ```
 
-    ## ✔ | OK F W S | Context
-    ## ══ testthat results  ════════════════════════════════════════════════════════════════════════════
-    ## OK: 7 SKIPPED: 0 FAILED: 0
+    ## ✔ | F W S  OK | Context
+    ## ⠏ |         0 | all                                                                                                     [ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
     ## 
-    ## ══ Results ══════════════════════════════════════════════════════════════════════════════════════
-    ## Duration: 0.6 s
+    ## ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    ## Duration: 0.8 s
     ## 
-    ## OK:       0
-    ## Failed:   0
-    ## Warnings: 0
-    ## Skipped:  0
+    ## [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]
 
 ## Code of Conduct
 

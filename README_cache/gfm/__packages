@@ -6,14 +6,5 @@ grDevices
 graphics
 stats
 voteogram
-jsonlite
 hrbrthemes
-tidyverse
 ggplot2
-tibble
-tidyr
-readr
-purrr
-dplyr
-stringr
-forcats

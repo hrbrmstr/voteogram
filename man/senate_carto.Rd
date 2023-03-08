@@ -30,7 +30,7 @@ sen <- roll_call("senate", 115, 1, 110)
 }
 
 # Using a saved object
-sen <- readRDS(system.file("extdata", "sen.rds", package="voteogram"))
+sen <- readRDS(system.file("extdata", "sen.rds", package = "voteogram"))
 
 senate_carto(sen)
 }

@@ -4,7 +4,7 @@
 \alias{fortify.pprc}
 \title{Fortify a \code{\link[=roll_call]{roll_call()}} (\code{pprc}) object}
 \usage{
-\method{fortify}{pprc}(model, data)
+\method{fortify}{pprc}(model, data, ...)
 }
 \arguments{
 \item{model}{a \code{\link[=roll_call]{roll_call()}} (\code{pprc}) object}

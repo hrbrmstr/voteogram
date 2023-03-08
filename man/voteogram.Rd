@@ -3,7 +3,6 @@
 \docType{package}
 \name{voteogram}
 \alias{voteogram}
-\alias{voteogram-package}
 \title{U.S. House and Senate Voting Cartogram Generators}
 \description{
 ProPublica' <https://projects.propublica.org/represent/> makes United States

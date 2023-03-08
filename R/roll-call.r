@@ -30,7 +30,7 @@ roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L)
   base_url <- sprintf(base_url, critter, number, session, rcall)
 
   res <- jsonlite::fromJSON(base_url)
-  res$votes <- tbl_df(res$votes)
+  res$votes <- tibble::as_tibble(res$votes)
 
   class(res) <- c("pprc", class(res))
 
@@ -44,7 +44,7 @@ roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L)
 #' @param model a [roll_call()] (`pprc`) object
 #' @param data unused
 #' @export
-fortify.pprc <- function(model, data) { model$votes }
+fortify.pprc <- function(model, data, ...) { model$votes }
 
 #' Better default `print` function for [roll_call()] (`pprc`) objects
 #'

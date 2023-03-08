@@ -4,8 +4,11 @@
 \alias{house_carto}
 \title{Produce a ProPublica- or GovTrack-style House roll call vote cartogram}
 \usage{
-house_carto(vote_tally, style = c("pp", "gt", "propublica", "govtrack"),
-  pp_square = FALSE)
+house_carto(
+  vote_tally,
+  style = c("pp", "gt", "propublica", "govtrack"),
+  pp_square = FALSE
+)
 }
 \arguments{
 \item{vote_tally}{either a \code{pprc} object (the result of a call to \code{\link[=roll_call]{roll_call()}}) or
@@ -37,7 +40,7 @@ rep <- roll_call("house", 115, 1, 256)
 }
 
 # using a saved object
-rep <- readRDS(system.file("extdata", "rep.rds", package="voteogram"))
+rep <- readRDS(system.file("extdata", "rep.rds", package = "voteogram"))
 
-house_carto(rep, pp_square=TRUE)
+house_carto(rep, pp_square = TRUE)
 }

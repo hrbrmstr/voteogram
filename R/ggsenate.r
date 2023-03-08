@@ -16,28 +16,38 @@
 #' }
 #'
 #' # Using a saved object
-#' sen <- readRDS(system.file("extdata", "sen.rds", package="voteogram"))
+#' sen <- readRDS(system.file("extdata", "sen.rds", package = "voteogram"))
 #'
 #' senate_carto(sen)
 senate_carto <- function(vote_tally) {
-
   if (inherits(vote_tally, "pprc")) vote_tally <- vote_tally$votes
-  if (!inherits(vote_tally, "data.frame")) stop("Needs a data.frame", call.=FALSE)
+  if (!inherits(vote_tally, "data.frame")) stop("Needs a data.frame", call. = FALSE)
 
   cdiff <- setdiff(c("state_abbrev", "party", "district", "position"), colnames(vote_tally))
-  if (length(cdiff) > 0) stop(sprintf("Missing: %s", paste0(cdiff, collapse=", ")), call.=FALSE)
+  if (length(cdiff) > 0) stop(sprintf("Missing: %s", paste0(cdiff, collapse = ", ")), call. = FALSE)
 
-  vote_tally <- dplyr::mutate(vote_tally, id=sprintf("%s_%s", toupper(state_abbrev), district))
-  vote_tally <- dplyr::mutate(vote_tally, fill=sprintf("%s-%s", toupper(party), tolower(position)))
-  vote_tally <- dplyr::mutate(vote_tally, fill=ifelse(grepl("acant", fill), "Vacant", fill))
+  vote_tally <- dplyr::mutate(vote_tally, id = sprintf("%s_%s", toupper(state_abbrev), district))
+  vote_tally <- dplyr::mutate(vote_tally, fill = sprintf("%s-%s", toupper(party), tolower(position)))
+  vote_tally <- dplyr::mutate(vote_tally, fill = ifelse(grepl("acant", fill), "Vacant", fill))
 
-  plot_df <- dplyr::left_join(senate_df, vote_tally, by="id")
+  plot_df <- dplyr::left_join(senate_df, vote_tally, by = "id")
 
   ggplot(plot_df) +
-    geom_rect(aes(xmin=x, ymin=y, xmax=xmax, ymax=ymax, fill=fill), color="white", size=0.25) +
+    geom_rect(
+      aes(
+        xmin = x,
+        ymin = y,
+        xmax = xmax,
+        ymax = ymax,
+        fill = fill
+      ),
+      color = "white",
+      linewidth = 0.25
+    ) +
     scale_y_reverse() +
-    scale_fill_manual(name=NULL, values=vote_carto_fill) +
-    labs(x=NULL, y=NULL)
-
+    scale_fill_manual(
+      name = NULL,
+      values = vote_carto_fill
+    ) +
+    labs(x = NULL, y = NULL)
 }
-

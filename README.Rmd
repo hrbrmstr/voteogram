@@ -7,10 +7,6 @@ editor_options:
 knitr::opts_chunk$set(fig.retina=2)
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/voteogram.svg?branch=master)](https://travis-ci.org/hrbrmstr/voteogram)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/voteogram?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/voteogram)
-[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/voteogram/master.svg)](https://codecov.io/github/hrbrmstr/voteogram?branch=master)
-
 # voteogram
 
 U.S. House and Senate Voting Cartogram Generators
@@ -60,7 +56,7 @@ Helpers:
 ### Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/voteogram")
+remotes::install_github("hrbrmstr/voteogram")
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}

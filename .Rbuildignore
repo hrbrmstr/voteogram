@@ -10,4 +10,5 @@
 ^appveyor\.yml$
 ^codecov\.yml$
 ^CONDUCT\.md$
+^NEWS\.md$
 ^cran-comments\.md$

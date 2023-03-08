@@ -10,6 +10,8 @@
 \item{model}{a \code{\link[=roll_call]{roll_call()}} (\code{pprc}) object}
 
 \item{data}{unused}
+
+\item{...}{unused}
 }
 \description{
 Fortify a \code{\link[=roll_call]{roll_call()}} (\code{pprc}) object

@@ -1,0 +1,1 @@
+Fixed NEWS and missing, new fortify ... parameter identified by Kurt in email today.

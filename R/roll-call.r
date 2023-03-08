@@ -43,6 +43,7 @@ roll_call <- function(critter = c("house", "senate"), number, session = c(1L,2L)
 #' @md
 #' @param model a [roll_call()] (`pprc`) object
 #' @param data unused
+#' @param ... unused
 #' @export
 fortify.pprc <- function(model, data, ...) { model$votes }
 
